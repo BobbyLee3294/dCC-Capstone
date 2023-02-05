@@ -5,7 +5,7 @@ from authentication.models import User
 
 
 class Comment(models.Model):
-    comment = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     text_body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
