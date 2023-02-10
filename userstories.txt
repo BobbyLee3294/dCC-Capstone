@@ -1,0 +1,9 @@
+As a __________, I want to _____________ so that I can _____________.
+    the who, what and why?
+
+As an developer, I want to implenment a feature that will search through Google's Book API to find a book title a user would search for so I can show the user other related titles that they could want to read or add to their personal bookshelves(a collection of book objects that would be added to a database via a Django backend to reduce requests)
+
+As an user, I want to be able to see other users' bookshelves if I am already a user of the app so I can see if we share any similar titles to later comment about.
+
+As an user, I want to be to sort books via a shelf sorting ability (a way to organize a collection of books by genre, theme, or other catergories ) so I can share with others on my profile page.
+
