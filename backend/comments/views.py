@@ -27,6 +27,6 @@ def user_comments(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        cars = Comment.objects.filter(user_id=request.user.id)
-        serializer = CommentSerializer(cars, many=True)
+        comment_well = Comment.objects.filter(user_id=request.user.id)
+        serializer = CommentSerializer(comment_well, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
