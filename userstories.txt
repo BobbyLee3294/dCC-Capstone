@@ -10,3 +10,4 @@ As an user, I want to be to sort books via a shelf sorting ability (a way to org
 As an developer, I want to include the ability to navigate between multiple bookshelves with the use of a vertical navbar so that I can keep track of the combination of pre-made and user-generated bookshelves on the frontend.
 
 As a nostalgic loving UX artist, I want to maintain the bridge between early 90s era UX design and today's UX typical layout so that the user experience is unique but familiar.
+
