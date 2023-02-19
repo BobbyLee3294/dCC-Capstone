@@ -6,6 +6,7 @@ from authentication.models import User
 class Bookshelf(models.Model):
     book = models.ForeignKey('Book', on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
+    description = models.TextField()
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField()
     date_updated = models.DateTimeField()
