@@ -12,8 +12,6 @@ class Bookshelf(models.Model):
 
 
 class Book(models.Model):
-    # Question: Could this reduce the number of requests? Possible TODO
-    # api_id = models.CharField()
-    # api_link = models.URLField()
-    # book_info = models.JSONField()
-    pass
+    api_id = models.CharField()
+    api_link = models.URLField()
+    book_info = models.JSONField()
