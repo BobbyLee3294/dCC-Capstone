@@ -13,6 +13,6 @@ class Bookshelf(models.Model):
 
 
 class Book(models.Model):
-    api_id = models.CharField()
+    api_id = models.CharField(max_length=12)
     api_link = models.URLField()
     book_info = models.JSONField()
