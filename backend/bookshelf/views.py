@@ -1,15 +1,32 @@
-from django.views.generic import CreateView
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.decorators import api_view, permission_classes
 
-from backend.bookshelf.models import Bookshelf
+from .models import Bookshelf
+from .serializers import BookshelfSerializer
 
 # Create your views here.
 
-# Question: Could I create bookshevles without having to using google's API
-# Better Question: How can I make bookshevles that are better than Google's (lul)
-#
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_all_bookshelves(request):
+    bookshelves = Bookshelf.objects.all()
+    serializer = BookshelfSerializer(bookshelves, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class BookshelfCreateView(CreateView):
-    model = Bookshelf
-    template_name_suffix = "Shelf"
-    # form_class =
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def user_bookshelves(request):
+    if request.method == 'POST':
+        serializer = BookshelfSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        user_bookshelf = Bookshelf.objects.filter(user_id=request.user.id)
+        serializer = BookshelfSerializer(user_bookshelf, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
