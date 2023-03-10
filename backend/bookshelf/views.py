@@ -27,6 +27,7 @@ def user_bookshelves(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        user_bookshelf = Bookshelf.objects.filter(user_id=request.user.id)
+        user_bookshelf = Bookshelf.objects.filter(
+            created_by_id=request.user.id)
         serializer = BookshelfSerializer(user_bookshelf, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
