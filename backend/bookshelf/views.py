@@ -17,9 +17,10 @@ def get_all_bookshelves(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def user_bookshelves(request):
+    user_bookshelf = Bookshelf.objects.filter(created_by_id=request.user.id)
     if request.method == 'POST':
         serializer = BookshelfSerializer(data=request.data)
         if serializer.is_valid():
@@ -27,7 +28,13 @@ def user_bookshelves(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        user_bookshelf = Bookshelf.objects.filter(
-            created_by_id=request.user.id)
         serializer = BookshelfSerializer(user_bookshelf, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'PUT':
+        serializer = BookshelfSerializer(user_bookshelf, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    elif request.method == 'DELETE':
+        user_bookshelf.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
