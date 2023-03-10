@@ -5,9 +5,10 @@ from .models import Bookshelf, Book
 class BookshelfSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bookshelf
-        fields = ['books', 'name', 'description',
+        fields = ['books', 'book_id', 'name', 'description',
                   'created_by', 'date_created', 'date_updated']
         depth = 1
+    book_id = serializers.IntegerField(write_only=True)
 
 
 class BookSerializer(serializers.ModelSerializer):
