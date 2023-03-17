@@ -9,10 +9,12 @@ class Bookshelf(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+    total_books = models.IntegerField(default=0)
+    list_of_books = models.JSONField(blank=True, null=True)
 
 
 class Book(models.Model):
     api_id = models.CharField(max_length=12)
     api_link = models.URLField()
-    book_info = models.JSONField()
-    bookshelf = models.ForeignKey('Bookshelf', on_delete=models.CASCADE)
+    book_info = models.JSONField(default=dict)
+    bookshelf = models.ManyToManyField(Bookshelf)
