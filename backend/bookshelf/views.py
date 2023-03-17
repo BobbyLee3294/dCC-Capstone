@@ -1,10 +1,12 @@
+from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 
-from .models import Bookshelf
+from .models import Book, Bookshelf
 from .serializers import BookshelfSerializer
+from .utils import BookshelfUtils
 
 # Create your views here.
 
@@ -38,3 +40,16 @@ def user_bookshelves(request):
     elif request.method == 'DELETE':
         user_bookshelf.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def bookshelf_detail(request, bookshelf_id):
+    # Retrieve the bookshelf instance
+    bookshelf = Bookshelf.objects.get(id=bookshelf_id)
+
+    # Serialize the books associated with the bookshelf and store the JSON string
+    BookshelfUtils.serialize_books(bookshelf)
+
+    # Return a JSON response containing the list_of_books field
+    return JsonResponse({'list_of_books': bookshelf.list_of_books})
