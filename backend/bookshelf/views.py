@@ -32,24 +32,24 @@ def user_bookshelves(request):
     elif request.method == 'GET':
         serializer = BookshelfSerializer(user_bookshelf, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    elif request.method == 'PUT':
-        serializer = BookshelfSerializer(user_bookshelf, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
     elif request.method == 'DELETE':
         user_bookshelf.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT'])
 @permission_classes([IsAuthenticated])
 def bookshelf_detail(request, bookshelf_id):
     # Retrieve the bookshelf instance
     bookshelf = Bookshelf.objects.get(id=bookshelf_id)
 
-    # Serialize the books associated with the bookshelf and store the JSON string
-    BookshelfUtils.serialize_books(bookshelf)
-
-    # Return a JSON response containing the list_of_books field
-    return JsonResponse({'list_of_books': bookshelf.list_of_books})
+    if request.method == 'PUT':
+        serializer = BookshelfSerializer(bookshelf, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    elif request.method == 'GET':
+        # Serialize the books associated with the bookshelf and store the JSON string
+        BookshelfUtils.serialize_books(bookshelf)
+        # Return a JSON response containing the list_of_books field
+        return JsonResponse({'list_of_books': bookshelf.list_of_books})
