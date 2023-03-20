@@ -9,23 +9,26 @@ const BookshelfPage = () => {
   const [bookshelves, setBookshelves] = useState();
 
   useEffect(() => {
-    const fetchUserShelves = async () => {
+    const fetchUserShelvesList = async () => {
       try {
         axios
-          .get("http://127.0.0.1:8000/api/bookshelves/", {
+          .get("http://127.0.0.1:8000/api/bookshelves/2", {
             headers: {
               Authorization: "Bearer " + token,
             },
           })
           .then((response) => {
-            console.log("The response was found! Showing the bookshelves!");
+            console.log(
+              "The response was found! Showing the bookshelves! " +
+                response.data
+            );
             setBookshelves(response.data);
           });
       } catch (error) {
         console.log(error.message);
       }
     };
-    fetchUserShelves();
+    fetchUserShelvesList();
   }, [token]);
   return (
     <div>
