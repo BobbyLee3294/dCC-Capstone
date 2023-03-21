@@ -6,7 +6,7 @@ import json
 class BookshelfUtils:
     @staticmethod
     def serialize_books(bookshelf):
-        books = list(bookshelf.book_set.all())
+        books = list(bookshelf.list_of_books.all())
         book_list = [book.title for book in books]
         bookshelf.list_of_books = json.dumps(book_list)
         bookshelf.save()
