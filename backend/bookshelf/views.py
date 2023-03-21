@@ -42,7 +42,6 @@ def user_bookshelves(request):
 def bookshelf_detail(request, bookshelf_id):
     # Retrieve the bookshelf instance
     bookshelf = Bookshelf.objects.get(id=bookshelf_id)
-
     if request.method == 'PUT':
         serializer = BookshelfSerializer(bookshelf, data=request.data)
         serializer.is_valid(raise_exception=True)
