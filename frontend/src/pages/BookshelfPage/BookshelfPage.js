@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 // import components
@@ -10,28 +10,30 @@ const BookshelfPage = () => {
   const [user, token] = useAuth();
   const [bookshelves, setBookshelves] = useState();
 
-  useEffect(() => {
-    const fetchUserShelvesList = async () => {
-      try {
-        axios
-          .get("http://127.0.0.1:8000/api/bookshelves/", {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          })
-          .then((response) => {
-            console.log(
-              "The response was found! Showing the bookshelves! " +
-                Object.values(response.data)
-            );
-            setBookshelves(response.data);
-          });
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchUserShelvesList();
+  const fetchUserShelvesList = useCallback(() => {
+    try {
+      axios
+        .get("http://127.0.0.1:8000/api/bookshelves/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        })
+        .then((response) => {
+          console.log(
+            "The response was found! Showing the bookshelves! " +
+              Object.values(response.data)
+          );
+          setBookshelves(response.data);
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
   }, [token]);
+
+  useEffect(() => {
+    fetchUserShelvesList();
+  }, [fetchUserShelvesList]);
+
   return (
     <div>
       <div>
