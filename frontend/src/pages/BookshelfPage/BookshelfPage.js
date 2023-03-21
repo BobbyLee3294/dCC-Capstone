@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 // import components
+import BookshelfForm from "../../components/BookshelfForm/BookshelfForm";
 
 const BookshelfPage = () => {
   const [user, token] = useAuth();
@@ -12,7 +13,7 @@ const BookshelfPage = () => {
     const fetchUserShelvesList = async () => {
       try {
         axios
-          .get("http://127.0.0.1:8000/api/bookshelves/2", {
+          .get("http://127.0.0.1:8000/api/bookshelves/2/", {
             headers: {
               Authorization: "Bearer " + token,
             },
@@ -32,11 +33,20 @@ const BookshelfPage = () => {
   }, [token]);
   return (
     <div>
-      <h1>
-        This is where you will see all the bookshelves. Pre-made and
-        custom-made!
-      </h1>
-      {/* TODO: Create a component for the Bookshelf model */}
+      <div>
+        <h1>
+          Hello {user.first_name}! This is where you will see all the
+          bookshelves. Pre-made and custom-made!
+        </h1>
+      </div>
+      <div>
+        {/* TODO: Create a component that will display all of the user's bookshelves */}
+        {/* <BookshelfList bookshelves={bookshelves} /> */}
+      </div>
+      <div>
+        <h2>Create New</h2>
+        <BookshelfForm />
+      </div>
     </div>
   );
 };
