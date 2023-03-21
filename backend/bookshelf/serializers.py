@@ -6,7 +6,7 @@ class BookshelfSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bookshelf
         fields = ['name', 'description',
-                  'created_by', 'date_created', 'date_updated']
+                  'created_by', 'date_created', 'date_updated', 'total_books', 'list_of_books']
         depth = 1
 
 
