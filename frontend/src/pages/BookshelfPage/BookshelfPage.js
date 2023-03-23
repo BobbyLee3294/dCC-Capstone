@@ -39,15 +39,16 @@ const BookshelfPage = () => {
       <div>
         <h1>
           Hello {user.first_name}! This is where you will see all the
-          bookshelves. Pre-made and custom-made!
+          bookshelves.
         </h1>
+        <br />
       </div>
       <div>
         {/* TODO: Create a component that will display all of the user's bookshelves */}
         <BookshelfList bookshelves={bookshelves} />
+        <br />
       </div>
       <div>
-        <h4>Create New</h4>
         <BookshelfForm />
       </div>
     </div>
