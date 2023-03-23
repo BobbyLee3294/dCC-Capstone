@@ -9,15 +9,22 @@ from .serializers import BookshelfSerializer
 # Create your views here.
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 @permission_classes([AllowAny])
 def get_all_bookshelves(request):
     bookshelves = Bookshelf.objects.all()
-    serializer = BookshelfSerializer(bookshelves, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    if request.method == 'POST':
+        serializer = BookshelfSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'GET':
+        serializer = BookshelfSerializer(bookshelves, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+@api_view(['GET', 'POST', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def user_bookshelves(request):
     user_bookshelf = Bookshelf.objects.filter(created_by_id=request.user.id)
