@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
-import useCustomForm from "../../hooks/useCustomForm";
+import useRegisrationForm from "../../hooks/useRegisrationForm";
 
 const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
@@ -11,7 +11,7 @@ const RegisterPage = () => {
     firstName: "",
     lastName: "",
   };
-  const [formData, handleInputChange, handleSubmit] = useCustomForm(
+  const [formData, handleInputChange, handleSubmit] = useRegisrationForm(
     defaultValues,
     registerUser
   );
