@@ -14,7 +14,7 @@ class Bookshelf(models.Model):
     list_of_books = models.JSONField(blank=True)
 
     def __str__(self) -> str:
-        return self.name
+        return '%s %s' % (self.created_by, self.name)
 
 
 class Book(models.Model):
