@@ -9,7 +9,7 @@ from .serializers import BookshelfSerializer
 # Create your views here.
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_bookshelves(request):
     bookshelves = Bookshelf.objects.all()
