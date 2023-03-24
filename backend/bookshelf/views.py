@@ -13,15 +13,8 @@ from .serializers import BookshelfSerializer
 @permission_classes([AllowAny])
 def get_all_bookshelves(request):
     bookshelves = Bookshelf.objects.all()
-    if request.method == 'POST':
-        serializer = BookshelfSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    if request.method == 'GET':
-        serializer = BookshelfSerializer(bookshelves, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    serializer = BookshelfSerializer(bookshelves, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET', 'POST', 'DELETE'])
