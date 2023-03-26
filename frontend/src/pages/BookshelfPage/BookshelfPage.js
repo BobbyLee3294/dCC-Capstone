@@ -21,7 +21,11 @@ const BookshelfPage = () => {
         .then((response) => {
           console.log(
             "The response was found! Showing the bookshelves! " +
-              Object.values(response.data)
+              Object.values(
+                response.data.map(function (el) {
+                  return el.name;
+                })
+              )
           );
           setBookshelves(response.data);
         });
