@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BookshelfList = ({ bookshelves }) => {
+const BookshelfList = (props) => {
   return (
     <div>
       <div>
@@ -10,13 +10,15 @@ const BookshelfList = ({ bookshelves }) => {
         </h2>
       </div>
       <div>
-        {/* {Object.values(bookshelves).map((bookshelf, index) => (
-          <div key={index}>
-            <Link to={`/${bookshelf.name}`}>
-              <h3>{bookshelf.name}</h3>
-            </Link>
-          </div>
-        ))} */}
+        {props?.bookshelves?.map(function (el, index) {
+          return (
+            <div key={index}>
+              <Link to={`/${el.name}`}>
+                <h3>{el.name}</h3>
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
