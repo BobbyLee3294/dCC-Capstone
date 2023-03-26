@@ -38,6 +38,7 @@ function BookshelfForm(props) {
       name: bookshelfName,
       description: description,
       created_by: user.id,
+      // Question: Should this function only be limited to here?
       // list_of_books: generateBookTitles(),
     };
     axios
