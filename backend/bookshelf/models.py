@@ -11,7 +11,7 @@ class Bookshelf(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     total_books = models.PositiveIntegerField(default=0)
-    list_of_books = models.JSONField(blank=True)
+    list_of_books = models.JSONField(blank=True, default=list)
 
     def __str__(self) -> str:
         return '%s %s' % (self.created_by, self.name)
@@ -21,7 +21,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     book_info = models.JSONField(default=dict)
-    bookshelf = models.ManyToManyField(Bookshelf)
+    bookshelves = models.ManyToManyField(Bookshelf, related_name='books')
 
     def __str__(self) -> str:
         return self.title
