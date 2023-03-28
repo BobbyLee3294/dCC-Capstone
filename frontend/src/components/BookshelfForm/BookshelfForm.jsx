@@ -1,36 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { bookKey } from "../../localKey";
 
 function BookshelfForm(props) {
   const BASE_URL = "http://127.0.0.1:8000/api/bookshelves/";
   const [user, token] = useAuth();
   const [bookshelfName, setBookshelfName] = useState("");
   const [description, setDescription] = useState("");
-
-  function generateBookTitles() {
-    const bookTitles = [];
-    const APIKey = bookKey;
-    // TODO: Implent search capabilities for the query variable
-    const query = props;
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${APIKey}`
-      )
-      .then((response) => {
-        const bookData = response.data.items;
-        bookData.forEach((book) => {
-          const title = book.volumeInfo.title;
-          bookTitles.push(title);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    const books = bookTitles.map((title) => ({ title }));
-    return JSON.stringify(books);
-  }
 
   function handleSubmit(e) {
     e.preventDefault();
