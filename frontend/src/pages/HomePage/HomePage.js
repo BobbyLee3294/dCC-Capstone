@@ -32,7 +32,7 @@ const HomePage = () => {
         <p>{quote}</p>
       </div>
       <div>
-        <Link to="/bookshelf">
+        <Link to="/bookshelf_list">
           <button>Bookshelves</button>
         </Link>
       </div>

@@ -31,7 +31,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route
-          path="/bookshelf"
+          path="/bookshelf_list"
           element={
             <PrivateRoute>
               <BookshelfPage />
