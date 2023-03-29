@@ -41,13 +41,6 @@ const BookshelfListPage = () => {
   return (
     <div>
       <div>
-        <h1>
-          Hello {user.first_name}! This is where you will see all the
-          bookshelves.
-        </h1>
-        <br />
-      </div>
-      <div>
         <BookshelfList bookshelves={bookshelves} />
         <br />
       </div>
