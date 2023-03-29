@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 // Pages Imports
+import BookshelfListPage from "./pages/BookshelfListPage/BookshelfListPage";
 import BookshelfPage from "./pages/BookshelfPage/BookshelfPage";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -32,6 +33,14 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route
           path="/bookshelf_list"
+          element={
+            <PrivateRoute>
+              <BookshelfListPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/bookshelf_list/bookshelf/:name"
           element={
             <PrivateRoute>
               <BookshelfPage />

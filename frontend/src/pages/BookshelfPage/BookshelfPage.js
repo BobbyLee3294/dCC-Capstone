@@ -1,59 +1,58 @@
-import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
-
-// import components
-import BookshelfForm from "../../components/BookshelfForm/BookshelfForm";
-import BookshelfList from "../../components/BookshelfList/BookshelfList";
+import { axios } from "axios";
+import React, { useCallback, useEffect } from "react";
+import { bookKey } from "../../localKey";
 
 const BookshelfPage = () => {
-  const [user, token] = useAuth();
-  const [bookshelves, setBookshelves] = useState();
-
-  const fetchUserShelvesList = useCallback(() => {
-    try {
-      axios
-        .get("http://127.0.0.1:8000/api/bookshelves/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        })
-        .then((response) => {
-          console.log(
-            "The response was found! Showing the bookshelves! " +
-              Object.values(
-                response.data.map(function (el) {
-                  return el.name;
-                })
-              )
-          );
-          setBookshelves(response.data);
+  const generateBookTitles = useCallback(() => {
+    const bookTitles = [];
+    const APIKey = bookKey;
+    // TODO: Create search capabilities for the query variable
+    const query = "catcher";
+    debugger;
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${APIKey}`
+      )
+      .then((response) => {
+        const bookData = response.data.items;
+        bookData.forEach((book) => {
+          const title = book.volumeInfo.title;
+          bookTitles.push(title);
         });
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, [token]);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+    const books = bookTitles.map((title) => ({ title }));
+    return JSON.stringify(books);
+  }, []);
 
   useEffect(() => {
-    fetchUserShelvesList();
-  }, [fetchUserShelvesList]);
+    generateBookTitles();
+  }, [generateBookTitles]);
 
   return (
     <div>
       <div>
-        <h1>
-          Hello {user.first_name}! This is where you will see all the
-          bookshelves.
-        </h1>
-        <br />
-      </div>
-      <div>
-        {/* TODO: Create a component that will display all of the user's bookshelves */}
-        <BookshelfList bookshelves={bookshelves} />
-        <br />
-      </div>
-      <div>
-        <BookshelfForm />
+        <h3>
+          This is a more detailed page for the bookshelf you selected from
+          BookshelfList. Here it will the show the name, the description, when
+          it was created, when it was last updated, and of course the list of
+          books.
+        </h3>
+        <div>
+          <h4>This will show the name of the bookshelf.</h4>
+        </div>
+        <div>
+          <p>
+            This will show the description of the bookshelf. This will also show
+            the date the bookshelf was created and when it was last updated.
+          </p>
+        </div>
+        <div>
+          {/* TODO: Create a BookList component that will show a list of books in this bookshelf */}
+          <p>This is where the list of books will be displayed.</p>
+        </div>
       </div>
     </div>
   );
