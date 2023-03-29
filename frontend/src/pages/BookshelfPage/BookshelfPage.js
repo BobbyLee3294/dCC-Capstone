@@ -2,6 +2,7 @@ import React from "react";
 import Bookshelf from "../../components/Bookshelf/Bookshelf";
 
 const BookshelfPage = () => {
+  // TODO: figure out a way to pass bookshelf data from BookshelfListPage to here
   return (
     <div>
       <div>
