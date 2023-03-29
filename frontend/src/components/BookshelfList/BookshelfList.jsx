@@ -13,7 +13,7 @@ const BookshelfList = (props) => {
         {props?.bookshelves?.map(function (el, index) {
           return (
             <div key={index}>
-              <Link to={`/${el.name}`}>
+              <Link to={`bookshelf/${el.name}`}>
                 <h3>{el.name}</h3>
               </Link>
             </div>
