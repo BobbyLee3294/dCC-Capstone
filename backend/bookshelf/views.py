@@ -1,12 +1,10 @@
-from django.http import JsonResponse
 from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
 
-from .models import Book, Bookshelf
+from .models import Bookshelf
 from .serializers import BookshelfSerializer
-from .utils import BookshelfUtils
 
 # Create your views here.
 
@@ -19,7 +17,7 @@ def get_all_bookshelves(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+@api_view(['GET', 'POST', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def user_bookshelves(request):
     user_bookshelf = Bookshelf.objects.filter(created_by_id=request.user.id)
@@ -40,16 +38,12 @@ def user_bookshelves(request):
 @api_view(['GET', 'PUT'])
 @permission_classes([IsAuthenticated])
 def bookshelf_detail(request, bookshelf_id):
-    # Retrieve the bookshelf instance
     bookshelf = Bookshelf.objects.get(id=bookshelf_id)
-
+    if request.method == 'GET':
+        serializer = BookshelfSerializer(bookshelf, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     if request.method == 'PUT':
         serializer = BookshelfSerializer(bookshelf, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
-    elif request.method == 'GET':
-        # Serialize the books associated with the bookshelf and store the JSON string
-        BookshelfUtils.serialize_books(bookshelf)
-        # Return a JSON response containing the list_of_books field
-        return JsonResponse({'list_of_books': bookshelf.list_of_books})
