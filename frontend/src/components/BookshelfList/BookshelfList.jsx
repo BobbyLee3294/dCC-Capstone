@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const BookshelfList = (props) => {
   const naviagate = useNavigate();
-  const bookshelf = { bookshelf: Object.values(props) };
 
   return (
     <div>
