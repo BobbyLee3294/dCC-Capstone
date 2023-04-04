@@ -1,15 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Bookshelf from "../../components/Bookshelf/Bookshelf";
 
 const BookshelfDetailsPage = () => {
   // TODO: figure out a way to pass bookshelf data from BookshelfListPage to here
-  const { name } = useParams();
+  const { state } = useLocation();
+
   return (
     <div>
       <div>
         <div>
-          <Bookshelf bookshelf={name} />
+          <Bookshelf bookshelf={state} />
         </div>
       </div>
     </div>
