@@ -11,7 +11,7 @@ const BookshelfList = (props) => {
         {props?.bookshelves?.map(function (el, index) {
           const handleOnClick = () => {
             naviagate(`/bookshelf_details/${el.name}`, {
-              state: { bookshelf },
+              state: { el },
             });
           };
           return (
