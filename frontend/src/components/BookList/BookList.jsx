@@ -13,7 +13,7 @@ const BookList = (props) => {
           return (
             <div key={index}>
               {el.title}
-              <Book title={el.title} />
+              <Book book_id={el.book_info.id} />
             </div>
           );
         })}
