@@ -1,8 +1,14 @@
 import React from "react";
-import Book from "../Book/Book";
+import BookList from "../BookList/BookList";
 
 const Bookshelf = ({ bookshelf }) => {
   console.log("Bookshelf:", bookshelf);
+  const splitDateCreated = bookshelf.el.date_created.split("T");
+  const splitDateUpdated = bookshelf.el.date_updated.split("T");
+
+  console.log(splitDateCreated[0]);
+  console.log(splitDateUpdated[0]);
+
   return (
     <div>
       <div>
@@ -10,12 +16,16 @@ const Bookshelf = ({ bookshelf }) => {
         <div>
           <span>
             <label>Created On: </label>
-            {bookshelf.el.date_created}
+            {splitDateCreated[0]}
+            <br />
+            {splitDateCreated[1]}
           </span>
           <br />
           <span>
             <label>Last Updated On:</label>
-            {bookshelf.el.date_updated}
+            {splitDateUpdated[0]}
+            <br />
+            {splitDateUpdated[1]}
           </span>
           <br />
           <span>
@@ -25,7 +35,7 @@ const Bookshelf = ({ bookshelf }) => {
         </div>
         <div>
           <label>List of Books</label>
-          <Book />
+          <BookList list_of_books={bookshelf.el.list_of_books} />
         </div>
       </div>
     </div>
