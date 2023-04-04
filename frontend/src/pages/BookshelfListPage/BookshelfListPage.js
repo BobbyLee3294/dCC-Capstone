@@ -8,7 +8,7 @@ import BookshelfList from "../../components/BookshelfList/BookshelfList";
 
 const BookshelfListPage = () => {
   const [user, token] = useAuth();
-  const [bookshelves, setBookshelves] = useState();
+  const [bookshelves, setBookshelves] = useState([]);
 
   const fetchUserShelvesList = useCallback(() => {
     try {
