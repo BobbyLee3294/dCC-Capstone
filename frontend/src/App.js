@@ -41,7 +41,7 @@ function App() {
           }
         />
         <Route
-          path="/bookshelf_list/bookshelf/:name"
+          path="/bookshelf_details/:bookshelf"
           element={
             <PrivateRoute>
               <BookshelfDetailsPage />
