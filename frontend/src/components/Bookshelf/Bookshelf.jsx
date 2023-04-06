@@ -6,8 +6,8 @@ const Bookshelf = ({ bookshelf }) => {
   const splitDateCreated = bookshelf.el.date_created.split("T");
   const splitDateUpdated = bookshelf.el.date_updated.split("T");
 
-  console.log(splitDateCreated[0]);
-  console.log(splitDateUpdated[0]);
+  // console.log(splitDateCreated[0]);
+  // console.log(splitDateUpdated[0]);
 
   return (
     <div>
