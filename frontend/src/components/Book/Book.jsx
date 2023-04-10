@@ -11,8 +11,9 @@ const Book = ({ book_id }) => {
       const APIKey = bookKey;
       const BASE_URL = `https://www.googleapis.com/books/v1/volumes/${book_id}?key=${APIKey}`;
       axios.get(BASE_URL).then((response) => {
-        console.log("Book: " + response.data);
-        setBook(response.data);
+        console.log(book_id);
+        console.log("Book: " + response.data.title);
+        setBook(response.data.volumeInfo.title);
         setBookId(response.data.id);
       });
     } catch (error) {
@@ -30,7 +31,11 @@ const Book = ({ book_id }) => {
         This is a book. It should display the title, the author , and other
         metadata
       </h6>
-      <div>{bookId}</div>
+      <div>
+        {/* console.log({book}) */}
+        {bookId}
+      </div>
+      <div></div>
     </div>
   );
 };
