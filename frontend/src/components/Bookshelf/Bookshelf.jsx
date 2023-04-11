@@ -21,6 +21,7 @@ const Bookshelf = ({ bookshelf }) => {
             {splitDateCreated[1]}
           </span>
           <br />
+          <br />
           <span>
             <label>Last Updated On:</label>
             {splitDateUpdated[0]}
@@ -28,11 +29,13 @@ const Bookshelf = ({ bookshelf }) => {
             {splitDateUpdated[1]}
           </span>
           <br />
+          <br />
           <span>
             <label>Description: </label>
             {bookshelf.el.description}
           </span>
         </div>
+        <br />
         <div>
           <label>List of Books</label>
           <BookList list_of_books={bookshelf.el.list_of_books} />
