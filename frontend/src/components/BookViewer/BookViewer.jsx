@@ -2,19 +2,12 @@ import React from "react";
 
 const BookViewer = () => {
   return (
-    <head>
-        <meta httpEquiv="content-type" content="text-html; charset=utf-8" />
-        <title>Google Books Embedded Viewer</title>
-        <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
-        <script type="text/javascript">
-            google.books.load();
-
-            function initialize() {
-                var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
-                viewer.load('ISBN:0738531367');
-            }
-        </script>
-    </head>
+    <div>
+      <h2>
+        This is a more detailed view of the book which will include other
+        metadata such as the ISBN
+      </h2>
+    </div>
   );
 };
 
