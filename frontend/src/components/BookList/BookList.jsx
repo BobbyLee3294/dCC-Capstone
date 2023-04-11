@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const BookList = (props) => {
+  const navigate = useNavigate();
   return (
     <div>
       <h5>
@@ -10,9 +12,14 @@ const BookList = (props) => {
       <br />
       <div>
         {props.list_of_books.map(function (el, index) {
+          const handleOnClick = () => {
+            navigate(`/search/${el.title}`, {
+              state: { el },
+            });
+          };
           return (
             <div key={index}>
-              <div>{el.title}</div>
+              <div onClick={() => handleOnClick(el)}>{el.title}</div>
               <div>{el.author}</div>
               <br />
             </div>
