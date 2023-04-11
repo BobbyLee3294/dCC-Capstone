@@ -2,14 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const BookshelfList = (props) => {
-  const naviagate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div>
       <div>
         {props?.bookshelves?.map(function (el, index) {
           const handleOnClick = () => {
-            naviagate(`/bookshelf_details/${el.name}`, {
+            navigate(`/bookshelf_details/${el.name}`, {
               state: { el },
             });
           };
