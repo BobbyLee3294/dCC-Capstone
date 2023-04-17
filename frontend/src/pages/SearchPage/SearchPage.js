@@ -11,16 +11,6 @@ import BookViewer from "../../components/BookViewer/BookViewer";
 const SearchPage = () => {
   const [queryParam, setQueryParam] = useState("catcher");
   const [savedData, setSavedData] = useState([]);
-  const { google } = require("@googleapis/books");
-  const books = google.books({
-    version: "v1",
-    auth: { bookKey },
-  });
-  const params = { queryParam };
-  async function getBooks() {
-    const response = await axios.get(params);
-    console.log(`The book URL is ${response.data.url}`);
-  }
 
   return (
     <div>
