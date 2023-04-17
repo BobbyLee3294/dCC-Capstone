@@ -5,6 +5,7 @@ import "./App.css";
 // Pages Imports
 import BookshelfDetailsPage from "./pages/BookshelfDetailsPage/BookshelfDetailsPage";
 import BookshelfListPage from "./pages/BookshelfListPage/BookshelfListPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -45,6 +46,14 @@ function App() {
           element={
             <PrivateRoute>
               <BookshelfDetailsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <PrivateRoute>
+              <SearchPage />
             </PrivateRoute>
           }
         />
