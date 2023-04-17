@@ -37,6 +37,9 @@ const HomePage = () => {
         <Link to="/bookshelf_list">
           <button>Bookshelves</button>
         </Link>
+        <Link to="/search">
+          <button>Search</button>
+        </Link>
       </div>
     </div>
   );
