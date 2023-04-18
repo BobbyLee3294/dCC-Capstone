@@ -10,8 +10,8 @@ const BookPage = () => {
   const APIKey = bookKey;
 
   // TODO: #9 insert savedData.el.id from BookViewer to book_id
-  const book_id = { state };
   const generateBookInfo = useCallback(() => {
+    const book_id = { state };
     axios
       .get(
         `https://www.googleapis.com/books/v1/volumes/${book_id}?key=${APIKey}`
@@ -23,7 +23,7 @@ const BookPage = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }, [APIKey, book_id]);
+  }, [APIKey, state]);
 
   useEffect(() => {
     generateBookInfo();
