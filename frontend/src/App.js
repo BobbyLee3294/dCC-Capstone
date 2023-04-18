@@ -16,6 +16,7 @@ import Footer from "./components/Footer/Footer";
 import Navbar from "./components/NavBar/NavBar";
 
 // Util Imports
+import BookPage from "./pages/BookPage/BookPage";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
@@ -54,6 +55,14 @@ function App() {
           element={
             <PrivateRoute>
               <SearchPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/book/:title"
+          element={
+            <PrivateRoute>
+              <BookPage />
             </PrivateRoute>
           }
         />
