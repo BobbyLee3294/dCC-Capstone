@@ -6,6 +6,7 @@ import { bookKey } from "../../localKey";
 const BookPage = (props) => {
   const [book, setBook] = useState();
   const APIKey = bookKey;
+  // TODO: #9 insert data from BookViewer to book_id
   const book_id = "INSERT BOOK ID";
 
   const generateBookInfo = useCallback(() => {
