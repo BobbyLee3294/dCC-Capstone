@@ -13,6 +13,7 @@ const BookList = (props) => {
       <div>
         {props.list_of_books.map(function (el, index) {
           const handleOnClick = () => {
+            // TODO: #3 navigate to BookPage instead
             navigate(`/search/${el.title}`, {
               state: { el },
             });
