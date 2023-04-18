@@ -34,7 +34,6 @@ const SearchPage = () => {
     <div>
       <h1>This is the search page. Here you can search and view books.</h1>
       <div>
-        {/* Use the following line after creation of SearchBar component */}
         <SearchBar setQuery={setQuery} fetchBooks={fetchBooks} />
       </div>
       <div>
