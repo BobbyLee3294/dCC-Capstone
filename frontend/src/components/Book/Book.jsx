@@ -1,6 +1,6 @@
 import React from "react";
 
-const Book = () => {
+const Book = (props) => {
   return (
     <div>
       <div>
@@ -18,6 +18,7 @@ const Book = () => {
           <ol>sharableQuotes</ol>
           <ol>sharableQuotes</ol>
         </ul>
+        {/* TODO: #7 map out details */}
       </div>
     </div>
   );
