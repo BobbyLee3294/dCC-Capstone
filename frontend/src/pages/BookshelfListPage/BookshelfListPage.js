@@ -20,7 +20,7 @@ const BookshelfListPage = () => {
         })
         .then((response) => {
           console.log(
-            "The response was found! Showing the bookshelves! " +
+            `The response was found for ${user}! Showing the bookshelves! ` +
               Object.values(
                 response.data.map(function (el) {
                   return el.name;
@@ -32,7 +32,7 @@ const BookshelfListPage = () => {
     } catch (error) {
       console.log(error.message);
     }
-  }, [token]);
+  }, [token, user]);
 
   useEffect(() => {
     fetchUserShelvesList();

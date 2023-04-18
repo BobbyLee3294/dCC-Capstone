@@ -29,6 +29,7 @@ const HomePage = () => {
       <h1>Home Page for {user.username}!</h1>
       <div>
         <h3>Something to think about {user.first_name}</h3>
+        <br />
         <p>{quote}</p>
       </div>
       <div>
