@@ -1,14 +1,16 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Book from "../../components/Book/Book";
 import { bookKey } from "../../localKey";
 
-const BookPage = (props) => {
+const BookPage = () => {
+  const { state } = useLocation();
   const [book, setBook] = useState();
   const APIKey = bookKey;
-  // TODO: #9 insert data from BookViewer to book_id
-  const book_id = "INSERT BOOK ID";
 
+  // TODO: #9 insert savedData.el.id from BookViewer to book_id
+  const book_id = { state };
   const generateBookInfo = useCallback(() => {
     axios
       .get(
@@ -21,7 +23,7 @@ const BookPage = (props) => {
       .catch((error) => {
         console.log(error.message);
       });
-  }, [APIKey]);
+  }, [APIKey, book_id]);
 
   useEffect(() => {
     generateBookInfo();
