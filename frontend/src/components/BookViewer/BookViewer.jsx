@@ -15,7 +15,9 @@ const BookViewer = ({ savedData }) => {
       </h2>
       {savedData.map((el, index) => {
         const handleOnClick = () => {
-          navigate(`/book/${el.id}`);
+          navigate(`/book/${el.id}`, {
+            state: { el },
+          });
         };
         return (
           <div key={index}>
