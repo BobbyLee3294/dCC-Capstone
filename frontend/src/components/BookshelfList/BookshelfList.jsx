@@ -15,9 +15,6 @@ const BookshelfList = (props) => {
           };
           return (
             <div key={index}>
-              {/* <Link to={`/bookshelf_details/${el.name}`}>
-                <h3>{el.name}</h3>
-              </Link> */}
               <div onClick={() => handleOnClick(el)}>{el.name}</div>
             </div>
           );
