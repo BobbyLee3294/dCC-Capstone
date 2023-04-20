@@ -4,10 +4,7 @@ import { useNavigate } from "react-router-dom";
 const BookViewer = ({ savedData }) => {
   console.log("savedData:", savedData);
   const navigate = useNavigate();
-  // const authorArrToString = savedData.el.volumeInfo.authors.toString();
-  // const splitAuthorString = authorArrToString.split(",");
 
-  // console.log(splitAuthorString);
   return (
     <div>
       <h2>
