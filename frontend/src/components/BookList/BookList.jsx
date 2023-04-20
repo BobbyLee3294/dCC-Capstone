@@ -12,10 +12,10 @@ const BookList = (props) => {
       <br />
       <div>
         {props.list_of_books.map(function (el, index) {
-          const bookInfo = el.book_info;
+          const bookId = el.book_info.id;
           const handleOnClick = () => {
-            navigate(`/book/${el.book_info.id}`, {
-              state: { bookInfo },
+            navigate(`/book/${bookId}`, {
+              state: { bookId },
             });
           };
           return (

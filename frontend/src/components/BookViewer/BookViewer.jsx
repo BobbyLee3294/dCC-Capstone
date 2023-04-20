@@ -11,9 +11,10 @@ const BookViewer = ({ savedData }) => {
         This will show the books which you can click on to see in more detail.
       </h2>
       {savedData.map((el, index) => {
+        const bookId = el.id;
         const handleOnClick = () => {
-          navigate(`/book/${el.id}`, {
-            state: { el },
+          navigate(`/book/${bookId}`, {
+            state: { bookId },
           });
         };
         return (
