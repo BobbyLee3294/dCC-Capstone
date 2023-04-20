@@ -7,11 +7,11 @@ import { bookKey } from "../../localKey";
 const BookPage = () => {
   const { state } = useLocation();
   console.log("state:", state);
-  const book_id = "";
+  const book_id = state.bookId;
   const [book, setBook] = useState({});
   const APIKey = bookKey;
 
-  // TODO: #9 insert savedData.el.id from BookViewer to book_id
+  // TODO: #9 insert state from BookViewer and BookList to book_id
   // Question: How do I have generateBookInfo only make ONE request?
   // It currently makes requests until hit with a 429 status code
   const generateBookInfo = useCallback(() => {
@@ -31,7 +31,7 @@ const BookPage = () => {
 
   useEffect(() => {
     generateBookInfo();
-  });
+  }, [generateBookInfo]);
   return (
     <div>
       <h2>A page for the Book component</h2>
