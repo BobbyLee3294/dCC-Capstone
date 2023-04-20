@@ -5,20 +5,27 @@ const Book = (props) => {
     <div>
       <div>
         <h3>This is a Book. It will show the following details:</h3>
-        <ul>
-          <ol>basic attributes</ol>
-          <ol>title</ol>
-          <ol>author</ol>
-          <ol>pageCount</ol>
-          <ol>genre</ol>
-          {/* TODO: #5 make false advanced attributes hidden (Bonus pts if we can give the user to ability to toggle this.) */}
-          <ol>advanced attributes</ol>
-          <ol>publisher</ol>
-          <ol>publicDomainAccess</ol>
-          <ol>sharableQuotes</ol>
-          <ol>sharableQuotes</ol>
-        </ul>
+        <div>
+          <ol>
+            <ol>
+              basic attributes such as:
+              <li>title</li>
+              <li>author</li>
+              <li>pageCount</li>
+              <li>genre</li>
+            </ol>
+            {/* TODO: #5 make false advanced attributes hidden (Bonus pts if we can give the user to ability to toggle this.) */}
+            <ol>
+              and advanced attributes like:
+              <li>ISBN</li>
+              <li>publisher</li>
+              <li>publicDomainAccess</li>
+              <li>sharableQuotes</li>
+            </ol>
+          </ol>
+        </div>
         {/* TODO: #7 map out details */}
+        {props.book.id}
       </div>
     </div>
   );
