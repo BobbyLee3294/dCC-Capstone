@@ -4,27 +4,21 @@ const Book = ({ book }) => {
   return (
     <div>
       <div>
-        <h3>This is a Book. It will show the following details:</h3>
-        <div>
-          <ol>
-            <ol>
+        {/* <h3>This is a Book. It will show the following details:</h3>
               basic attributes such as:
-              <li>title </li>
-              <li>author</li>
+              title
+              author
               <li>pageCount</li>
               <li>genre</li>
               <li>description</li>
-            </ol>
-            {/* TODO: #5 make false advanced attributes hidden (Bonus pts if we can give the user to ability to toggle this.) */}
-            <ol>
-              and advanced attributes like:
-              <li>ISBN</li>
-              <li>publisher</li>
-              <li>publicDomainAccess</li>
-              <li>sharableQuotes</li>
-            </ol>
-          </ol>
-        </div>
+        */}
+        {/* TODO: #5 make false advanced attributes hidden (Bonus pts if we can give the user to ability to toggle this.) */}
+        {/* and advanced attributes like:
+              ISBN
+              publisher
+              publicDomainAccess
+              sharableQuotes
+         */}
         {/* TODO: #7 map out details */}
         <div>
           <h2>{book.volumeInfo?.title}</h2>
@@ -36,8 +30,12 @@ const Book = ({ book }) => {
           <p>ISBN: </p>
           <p>Page Count: {book.volumeInfo?.pageCount}</p>
           <p>Published: {book.volumeInfo?.publishedDate}</p>
+          <p>Publisher: {book.volumeInfo?.publisher}</p>
           <p>Genre: {book.volumeInfo?.categories}</p>
-          <p>Description: {book.volumeInfo?.description}</p>
+          <p
+            dangerouslySetInnerHTML={{ __html: book.volumeInfo?.description }}
+          />
+          <p>Format: {book.volumeInfo?.printType}</p>
         </div>
       </div>
     </div>
