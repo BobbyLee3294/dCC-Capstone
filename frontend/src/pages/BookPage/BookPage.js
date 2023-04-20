@@ -6,12 +6,16 @@ import { bookKey } from "../../localKey";
 
 const BookPage = () => {
   const { state } = useLocation();
-  const [book, setBook] = useState();
+  console.log("state:", state);
+  const book_id = "";
+  const [book, setBook] = useState({});
   const APIKey = bookKey;
 
   // TODO: #9 insert savedData.el.id from BookViewer to book_id
+  // Question: How do I have generateBookInfo only make ONE request?
+  // It currently makes requests until hit with a 429 status code
   const generateBookInfo = useCallback(() => {
-    const book_id = { state };
+    // debugger;
     axios
       .get(
         `https://www.googleapis.com/books/v1/volumes/${book_id}?key=${APIKey}`
@@ -23,7 +27,7 @@ const BookPage = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }, [APIKey, state]);
+  }, [APIKey, book_id]);
 
   useEffect(() => {
     generateBookInfo();
