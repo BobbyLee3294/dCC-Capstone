@@ -1,6 +1,6 @@
 import React from "react";
 
-const Book = (props) => {
+const Book = ({ book }) => {
   return (
     <div>
       <div>
@@ -9,10 +9,11 @@ const Book = (props) => {
           <ol>
             <ol>
               basic attributes such as:
-              <li>title</li>
+              <li>title </li>
               <li>author</li>
               <li>pageCount</li>
               <li>genre</li>
+              <li>description</li>
             </ol>
             {/* TODO: #5 make false advanced attributes hidden (Bonus pts if we can give the user to ability to toggle this.) */}
             <ol>
@@ -25,7 +26,19 @@ const Book = (props) => {
           </ol>
         </div>
         {/* TODO: #7 map out details */}
-        {props.book.id}
+        <div>
+          <h2>{book.volumeInfo?.title}</h2>
+          <span>
+            <h4>By {book.volumeInfo?.authors}</h4>
+          </span>
+        </div>
+        <div>
+          <p>ISBN: </p>
+          <p>Page Count: {book.volumeInfo?.pageCount}</p>
+          <p>Published: {book.volumeInfo?.publishedDate}</p>
+          <p>Genre: {book.volumeInfo?.categories}</p>
+          <p>Description: {book.volumeInfo?.description}</p>
+        </div>
       </div>
     </div>
   );
