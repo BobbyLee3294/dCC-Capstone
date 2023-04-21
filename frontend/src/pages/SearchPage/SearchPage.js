@@ -7,7 +7,7 @@ import BookViewer from "../../components/BookViewer/BookViewer";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
 const SearchPage = () => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("sample");
   const [savedData, setSavedData] = useState([]);
   const APIKey = bookKey;
 
