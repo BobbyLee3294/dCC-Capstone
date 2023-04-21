@@ -34,7 +34,6 @@ const BookPage = () => {
   }, [generateBookInfo]);
   return (
     <div>
-      <h2>A page for the Book component</h2>
       <Book book={book} />
     </div>
   );
