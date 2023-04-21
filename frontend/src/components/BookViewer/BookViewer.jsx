@@ -21,14 +21,14 @@ const BookViewer = ({ savedData }) => {
           <div key={index}>
             <div className="img-viewer" onClick={handleOnClick}>
               <img
-                src={el.volumeInfo.imageLinks.smallThumbnail}
-                alt={el.volumeInfo.title}
+                src={el.volumeInfo?.imageLinks.smallThumbnail}
+                alt={el.volumeInfo?.title}
               />
             </div>
             <div className="bookInfo">
-              <h3>Title: {el.volumeInfo.title}</h3>
+              <h3>Title: {el.volumeInfo?.title}</h3>
               {/* TODO: #4 Have authors shown like this: "Author(s): authors[0], authors[1], etc." */}
-              <h4>Author(s): {el.volumeInfo.authors}</h4>
+              <h4>Author(s): {el.volumeInfo?.authors}</h4>
             </div>
           </div>
         );
