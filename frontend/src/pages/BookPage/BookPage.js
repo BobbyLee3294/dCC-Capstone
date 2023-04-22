@@ -11,9 +11,6 @@ const BookPage = () => {
   const [book, setBook] = useState({});
   const APIKey = bookKey;
 
-  // TODO: #9 insert state from BookViewer and BookList to book_id
-  // Question: How do I have generateBookInfo only make ONE request?
-  // It currently makes requests until hit with a 429 status code
   const generateBookInfo = useCallback(() => {
     // debugger;
     axios
