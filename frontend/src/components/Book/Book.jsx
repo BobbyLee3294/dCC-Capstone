@@ -23,6 +23,7 @@ const Book = ({ book }) => {
         <div className="titleHeader">
           <h2>{book.volumeInfo?.title}</h2>
           <span>
+            {/* TODO: Have authors shown like this: "Author(s): authors[0], authors[1]...etc." */}
             <h4>By {book.volumeInfo?.authors}</h4>
           </span>
         </div>
@@ -33,10 +34,12 @@ const Book = ({ book }) => {
           />
         </div>
         <div className="attributesBody">
+          {/* TODO: #11 Have ISBN shown like this: "ISBN: industryIdentifiers[0], industryIdentifiers[1]" */}
           <p>ISBN: </p>
           <p>Page Count: {book.volumeInfo?.pageCount}</p>
           <p>Published: {book.volumeInfo?.publishedDate}</p>
           <p>Publisher: {book.volumeInfo?.publisher}</p>
+          {/* TODO: #12 Have genre shown like this: "Genre: categories[0], categories[1]...etc." */}
           <p>Genre: {book.volumeInfo?.categories}</p>
           {/* Question: Is there another way to display the description other than this? */}
           <p
