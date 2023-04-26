@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
 const SearchBar = ({ setQuery, fetchBooks, savedData }) => {
-  console.log("savedData:", savedData);
   const [search, setSearch] = useState("");
   const [filterOption, setFilterOption] = useState("");
   function handleSubmit(e) {
     e.preventDefault();
-    filterByOption();
+    filterByOption(savedData);
     setQuery(search);
     fetchBooks();
   }
@@ -19,16 +18,16 @@ const SearchBar = ({ setQuery, fetchBooks, savedData }) => {
     return books.filter((book) => {
       switch (filterText) {
         case "title":
-          return book.title.toLowerCase().includes(search.toLowerCase());
+          return Object.values(book)
+            .volumeInfo?.title.toLowerCase()
+            .includes(search.toLowerCase());
         case "author":
-          return book.authors
-            .split()
-            .toLowerCase()
+          return Object.values(book)
+            .volumeInfo?.authors.toLowerCase()
             .includes(search.toLowerCase());
         case "genre":
-          return book.categories
-            .split()
-            .toLowerCase()
+          return Object.values(book)
+            .volumeInfo?.categories.toLowerCase()
             .includes(search.toLowerCase());
         default:
           return true;
