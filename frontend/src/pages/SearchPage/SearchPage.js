@@ -34,7 +34,11 @@ const SearchPage = () => {
     <div>
       <h1>This is the search page. Here you can search and view books.</h1>
       <div>
-        <SearchBar setQuery={setQuery} fetchBooks={fetchBooks} />
+        <SearchBar
+          setQuery={setQuery}
+          fetchBooks={fetchBooks}
+          savedData={savedData}
+        />
       </div>
       <div>
         <BookViewer savedData={savedData} />
