@@ -10,11 +10,11 @@ const SearchBar = ({ setQuery, fetchBooks, savedData }) => {
     fetchBooks();
   }
   function filterByOption(books) {
+    // debugger;
     if (!filterOption) {
       return books;
     }
     const filterText = filterOption.toLowerCase();
-    debugger;
     return books.filter((book) => {
       switch (filterText) {
         case "title":
