@@ -15,12 +15,13 @@ const SearchBar = ({ setQuery, fetchBooks, savedData }) => {
       return books;
     }
     const filterText = filterOption.toLowerCase();
+
     return books.filter((book) => {
       switch (filterText) {
-        case "title":
-          return Object.values(book)
-            .volumeInfo?.title.toLowerCase()
-            .includes(search.toLowerCase());
+        // case "title":
+        //   return Object.values(book)
+        //     .volumeInfo?.title.toLowerCase()
+        //     .includes(search.toLowerCase());
         case "author":
           return Object.values(book)
             .volumeInfo?.authors.toLowerCase()
@@ -49,9 +50,9 @@ const SearchBar = ({ setQuery, fetchBooks, savedData }) => {
             onChange={(e) => setFilterOption(e.target.value)}
           >
             <option value=""></option>
-            <option value="title">Title</option>
+            {/* <option value="title">Title</option> */}
             <option value="author">Author</option>
-            <option value="Genre">Genre</option>
+            <option value="genre">Genre</option>
           </select>
           <button id="search-btn" type="submit">
             🔍
