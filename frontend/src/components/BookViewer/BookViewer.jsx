@@ -63,13 +63,23 @@ const BookViewer = ({ savedData }) => {
             return <div>Genre not found</div>;
           }
         };
+        const hasThumbnail = () => {
+          if (!el.volumeInfo?.imageLinks) {
+            return (
+              <img src={"../../img/no-image-icon-2.png"} alt={"Not found"} />
+            );
+          }
+          return (
+            <img
+              src={el.volumeInfo?.imageLinks.smallThumbnail}
+              alt={el.volumeInfo?.title}
+            />
+          );
+        };
         return (
           <div key={index}>
             <div className="img-viewer" onClick={handleOnClick}>
-              <img
-                src={el.volumeInfo?.imageLinks.smallThumbnail}
-                alt={el.volumeInfo?.title}
-              />
+              {hasThumbnail()}
             </div>
             <div className="bookInfo">
               {hasSubtitle()}
