@@ -66,7 +66,12 @@ const BookViewer = ({ savedData }) => {
         const hasThumbnail = () => {
           if (!el.volumeInfo?.imageLinks) {
             return (
-              <img src={"../../img/no-image-icon-2.png"} alt={"Not found"} />
+              <img
+                src={
+                  "https://github.com/BobbyLee3294/dCC-Capstone/blob/SearchPage-WIP/frontend/src/img/no-image-icon.png"
+                }
+                alt={"Not found"}
+              />
             );
           }
           return (
