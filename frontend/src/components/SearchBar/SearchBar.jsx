@@ -23,15 +23,22 @@ const SearchBar = ({ setQuery, fetchBooks, savedData }) => {
         //     .volumeInfo?.title.toLowerCase()
         //     .includes(search.toLowerCase());
         case "author":
-          return Object.values(book)
-            .volumeInfo?.authors.toLowerCase()
-            .includes(search.toLowerCase());
+          const bookAuthor = Object.entries(book)
+            .volumeInfo?.authors.toString()
+            .toLowerCase();
+          if (bookAuthor === undefined) {
+            return false;
+          } else if (!bookAuthor) {
+            return false;
+          }
+          return true;
         case "genre":
           return Object.values(book)
-            .volumeInfo?.categories.toLowerCase()
+            .volumeInfo?.categories.toString()
+            .toLowerCase()
             .includes(search.toLowerCase());
         default:
-          return true;
+          return false;
       }
     });
   }
