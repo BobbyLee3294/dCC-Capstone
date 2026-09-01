@@ -53,7 +53,7 @@ const BookViewer = ({ savedData }) => {
           const genreArray = el.volumeInfo?.categories;
           if (genreArray) {
             if (genreArray.length > 1) {
-              /** split this array and turn it into a string to be returned */
+              /*TODO: #14 split this array and turn it into a string to be returned */
               console.log(genreArray.toString());
               return <div>Genres: {genreArray.toString()}</div>;
             } else {
