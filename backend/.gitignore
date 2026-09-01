@@ -132,4 +132,3 @@ drf_jwt_backend/local_settings.py
 
 # custom files and directories
 bookshelf/management
-AGENTS.md
