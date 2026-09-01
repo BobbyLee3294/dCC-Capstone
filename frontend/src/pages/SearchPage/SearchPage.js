@@ -7,14 +7,16 @@ import BookViewer from "../../components/BookViewer/BookViewer";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
 const SearchPage = () => {
+  // Search text and fetched results for the Google Books API.
   const [query, setQuery] = useState("sample");
   const [savedData, setSavedData] = useState([]);
   const APIKey = bookKey;
 
+  // Fetch books matching the current query.
   const fetchBooks = useCallback(() => {
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${APIKey}`
+        `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${APIKey}`,
       )
       .then((response) => {
         console.log(response.data);
@@ -25,6 +27,7 @@ const SearchPage = () => {
       });
   }, [APIKey, query]);
 
+  // Refresh results whenever the query changes.
   useEffect(() => {
     fetchBooks();
     console.log("Collecting results for Google Books.");
